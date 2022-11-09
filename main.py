@@ -12,7 +12,7 @@ def kokkupõrked(koer,vastased):
 def vastaste_liikumine(vastaste_nimekiri):
     if vastaste_nimekiri:
         for vastane_rect in vastaste_nimekiri:
-            vastane_rect.x -= 5
+            vastane_rect.x -= 4
             if vastane_rect.bottom == 352:
                 ekraan.blit(kass,vastane_rect)
             else:
@@ -46,6 +46,7 @@ koer = pg.image.load("dog_right.png")
 # ristküliku puhul saame viitepunkti valida, midbottom, midleft, etc
 koer_rect = koer.get_rect(midbottom=(80, 355))
 koer_gravitatsioon = 0
+koer_rect_muutus = 0
 
 kass = pg.image.load("cat_left.png")
 kass_x_telg = 600
@@ -53,7 +54,7 @@ kass_rect = kass.get_rect(midbottom=(600,352))
 
 vastased_rect_nimekiri = []
 vastased_timer = pg.USEREVENT + 1
-pg.time.set_timer(vastased_timer, 1000)
+pg.time.set_timer(vastased_timer, 1500)
 
 lind = pg.image.load("dove-of-peace.png")
 while True:
@@ -65,12 +66,19 @@ while True:
         if mäng_aktiivne:
             if event.type == pg.KEYDOWN:
                 if event.key == pg.K_SPACE and koer_rect.bottom >= 350:
-                    koer_gravitatsioon = -20
+                    koer_gravitatsioon = -22
+                elif event.key == pg.K_RIGHT:
+                    koer_rect_muutus = 3
+                elif event.key == pg.K_LEFT:
+                    koer_rect_muutus = -3
+            if event.type == pg.KEYUP:
+                if event.key == pg.K_LEFT or event.key == pg.K_RIGHT:
+                    koer_rect_muutus = 0
             if event.type == vastased_timer:
                 if random.randint(0, 2):
                     vastased_rect_nimekiri.append(kass.get_rect(midbottom=(random.randint(900, 1100), 352)))
                 else:
-                    vastased_rect_nimekiri.append(lind.get_rect(midbottom=(random.randint(900, 1100), 300)))
+                    vastased_rect_nimekiri.append(lind.get_rect(midbottom=(random.randint(900, 1100), 280)))
         else:
             if event.type == pg.KEYDOWN and event.key == pg.K_SPACE:
                 mäng_aktiivne = True
@@ -92,6 +100,7 @@ while True:
         # KOER
         koer_gravitatsioon += 1
         koer_rect.y += koer_gravitatsioon
+        koer_rect.x += koer_rect_muutus
         if koer_rect.bottom >= 355:
             koer_rect.bottom = 355
         ekraan.blit(koer, koer_rect)
