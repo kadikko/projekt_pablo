@@ -98,6 +98,7 @@ while True:
                     koer_gravitatsioon = -22
                 elif event.key == pg.K_RIGHT:
                     koera_heli.play()
+                    koera_heli.set_volume(0.4)
                     koer_rect_muutus = KIIRUS
                 elif event.key == pg.K_LEFT:
                     koer_rect_muutus = -KIIRUS
@@ -148,10 +149,10 @@ while True:
 
         mäng_aktiivne = kokkupõrked(koer_rect, vastased_rect_nimekiri)
 
-
     else:
         mänguekraan.fill("Pink")
         mänguekraan.blit(tekst_mäng_läbi, tekst_mäng_läbi_rect)
+        vastased_rect_nimekiri.clear()
 
     pg.display.update()
     kell.tick(60)  # max kaadrite arv sekundis
