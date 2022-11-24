@@ -15,7 +15,6 @@ def kokkupõrked(koer, vastased):
                 return False
     return True
 
-
 def vastaste_liikumine(vastaste_nimekiri):
     if vastaste_nimekiri:
         for vastane_rect in vastaste_nimekiri:
@@ -31,6 +30,10 @@ def vastaste_liikumine(vastaste_nimekiri):
         return vastaste_nimekiri
     else:
         return []
+    
+def skoori_näitamine(x, y):
+    skoor = font.render("Skoor: " + str(round(skoori_value)),True, "Black")
+    mänguekraan.blit(skoor, (x, y))
 
 
 pg.init()
@@ -85,6 +88,12 @@ mäng_läbi_heli = pg.mixer.Sound("helid/GameOver.wav")
 tausta_heli = pg.mixer.music.load("helid/ambience.ogg")
 pg.mixer.music.play(-1)
 pg.mixer.music.set_volume(0.1)
+
+#skoor
+
+skoori_tekst_X = 10
+skoori_tekst_Y = 10
+skoori_value = 0
 
 while True:
 
@@ -145,14 +154,18 @@ while True:
 
         vastased_rect_nimekiri = vastaste_liikumine(vastased_rect_nimekiri)
 
-        # kokkupõrge
-
+        # skoori lugemine
+        if kokkupõrked(koer_rect, vastased_rect_nimekiri) == True:
+            skoori_value += 0.01
         mäng_aktiivne = kokkupõrked(koer_rect, vastased_rect_nimekiri)
+        
+        skoori_näitamine(skoori_tekst_X, skoori_tekst_Y)
 
     else:
         mänguekraan.fill("Pink")
         mänguekraan.blit(tekst_mäng_läbi, tekst_mäng_läbi_rect)
         vastased_rect_nimekiri.clear()
+        skoori_näitamine(skoori_tekst_X, skoori_tekst_Y)
 
     pg.display.update()
     kell.tick(60)  # max kaadrite arv sekundis
