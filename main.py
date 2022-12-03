@@ -31,22 +31,49 @@ def vastaste_liikumine(vastaste_nimekiri):
     else:
         return []
     
-def skoori_näitamine(x, y):
+def skoori_näitamine(x_telg, y_telg):
     skoor = font.render("Skoor: " + str(round(skoori_value)),True, "Black")
-    mänguekraan.blit(skoor, (x, y))
+    mänguekraan.blit(skoor, (x_telg, y_telg))
 
+def mängu_avaleht():
+    if avaleht:
+        mänguekraan.fill("Pink")
+        alguse_tekst = font.render("Alustamiseks vajuta tuhikut", True, "Black")
+        alguse_tekst_rect = alguse_tekst.get_rect(center=(LAIUS / 2, 50))
+        mänguekraan.blit(alguse_tekst, alguse_tekst_rect)
+        pg.display.update()
 
+def mängu_kiirus():
+    if skoori_value <= 20:
+        kell.tick(60)
+    if skoori_value > 20 and skoori_value <= 40:
+        kell.tick(70)
+    if skoori_value > 40 and skoori_value <= 60:
+        kell.tick(80)
+    if skoori_value > 60 and skoori_value <= 80:
+        kell.tick(90)
+    if skoori_value > 80 and skoori_value <= 100:
+        kell.tick(100)
+    if skoori_value > 100 and skoori_value <= 120:
+        kell.tick(110)
+    if skoori_value > 120 and skoori_value <= 140:
+        kell.tick(120)
+    if skoori_value > 140 and skoori_value <= 160:
+        kell.tick(130)
+    if skoori_value > 160:
+        kell.tick(140)  
+        
 pg.init()
 
 # loome mänguekraani, lisame mänguekraani aknale pealkirja ja ikooni, kella, fondi tüübi ja suuruse
 
 mänguekraan = pg.display.set_mode((LAIUS, KÕRGUS))
-pg.display.set_caption("Pablo seiklused")
+mänguekraan_rect = mänguekraan.get_rect()
+pg.display.set_caption("Pablo seiklus")
 mänguekraani_ikoon = pg.image.load("pildid/black-dog.png")
 pg.display.set_icon(mänguekraani_ikoon)
 kell = pg.time.Clock()
 font = pg.font.Font("Pixeltype.ttf", 55)
-mäng_aktiivne = True
 
 # salvestame pildid, mida kasutame tausta jaoks
 
@@ -55,7 +82,7 @@ linn = pg.image.load("pildid/lumine-taust-1.jpeg")
 
 # salvestame teksti, mida tahame visualiseerida mängu ajal
 
-tekst_mängu_ajal = font.render("Pablo seiklus", False, "Orange")
+tekst_mängu_ajal = font.render("Pablo seiklus", False, "Black")
 tekst_mängu_ajal_rect = tekst_mängu_ajal.get_rect(center=(LAIUS / 2, 50))
 
 # ja teksti, mida visualiseerime mängu lõppedes
@@ -74,7 +101,7 @@ koer_rect_muutus = 0
 kass = pg.image.load("pildid/cat_left.png")
 lind = pg.image.load("pildid/dove-of-peace.png")
 
-# loome vastaste jaoks järjendi, timeri ja määrame, mis aja möödudes uus vastane ilmub (?)
+# loome vastaste jaoks järjendi, timeri ja määrame, mis aja möödudes uus vastane ilmub
 
 vastased_rect_nimekiri = []
 vastased_timer = pg.USEREVENT + 1
@@ -89,17 +116,37 @@ tausta_heli = pg.mixer.music.load("helid/ambience.ogg")
 pg.mixer.music.play(-1)
 pg.mixer.music.set_volume(0.1)
 
-#skoor
+# skoori muutujad
 
 skoori_tekst_X = 10
 skoori_tekst_Y = 10
 skoori_value = 0
 
-while True:
+# ekraani liikumise muutuja
 
+ekraan = 0
+
+# mäng algab avalehe kuvamisega
+
+avaleht = True
+mäng_aktiivne = False
+
+mängu_avaleht()
+
+while avaleht:
     for event in pg.event.get():
         if event.type == pg.QUIT:
-            pg.quit()  # quit on init-i vastand, lõpetame mängu
+            pg.quit() # quit on init-i vastand, lõpetame mängu
+            exit()
+        if event.type == pg.KEYDOWN and event.key == pg.K_SPACE:
+            avaleht = False
+            mäng_aktiivne = True
+
+while True:
+    # nupuvajutused
+    for event in pg.event.get():
+        if event.type == pg.QUIT:
+            pg.quit()
             exit()
         if mäng_aktiivne:
             if event.type == pg.KEYDOWN:
@@ -126,15 +173,25 @@ while True:
         else:
             if event.type == pg.KEYDOWN and event.key == pg.K_SPACE:
                 mäng_aktiivne = True
-
+                skoori_value = 0
 
     # joonistame mänguekraanile linna, maapinna, teksti pinnad
     # joonistame kõik tegelased välja
     # uuendame kõike, mida tahame mänguekraanile kuvad
 
     if mäng_aktiivne:
-        mänguekraan.blit(linn, (0, 0))
-        mänguekraan.blit(maapind, (0, MAAPIND_KÕRGUS))
+        mänguekraan.blit(linn, (ekraan, 0))
+        mänguekraan.blit(linn, (LAIUS+ekraan, 0))
+        if (ekraan == -LAIUS):
+            mänguekraan.blit(linn, (LAIUS+ekraan, 0))
+            ekraan = 0
+        ekraan -= 1
+        mänguekraan.blit(maapind, (ekraan, MAAPIND_KÕRGUS))
+        mänguekraan.blit(maapind, (LAIUS+ekraan, MAAPIND_KÕRGUS))
+        if (ekraan == -LAIUS):
+            mänguekraan.blit(maapind, (LAIUS+ekraan, MAAPIND_KÕRGUS))
+            ekraan = 0
+        ekraan -= 1
         mänguekraan.blit(tekst_mängu_ajal, tekst_mängu_ajal_rect)
 
         # KOER
@@ -146,26 +203,36 @@ while True:
 
         if koer_rect.bottom >= MAAPIND_KÕRGUS + 5:
             koer_rect.bottom = MAAPIND_KÕRGUS + 5
+        koer_rect.clamp_ip(mänguekraan_rect)
         mänguekraan.blit(koer, koer_rect)
+        
         # joonistame koera(pinna) täpselt sinna asukohta, kus
         # koera ümber tõmmatud ristkülik asub
 
         # vaenlaste liikumine
 
         vastased_rect_nimekiri = vastaste_liikumine(vastased_rect_nimekiri)
-
+            
+        # kokkupõrge
+        
+        mäng_aktiivne = kokkupõrked(koer_rect, vastased_rect_nimekiri)
+        
         # skoori lugemine
         if kokkupõrked(koer_rect, vastased_rect_nimekiri) == True:
             skoori_value += 0.01
-        mäng_aktiivne = kokkupõrked(koer_rect, vastased_rect_nimekiri)
         
         skoori_näitamine(skoori_tekst_X, skoori_tekst_Y)
+        
+        mängu_kiirus()
 
+    # lõpuekraan
     else:
         mänguekraan.fill("Pink")
         mänguekraan.blit(tekst_mäng_läbi, tekst_mäng_läbi_rect)
         vastased_rect_nimekiri.clear()
         skoori_näitamine(skoori_tekst_X, skoori_tekst_Y)
+        koer_rect = koer.get_rect(midbottom=(80, MAAPIND_KÕRGUS + 5))
 
     pg.display.update()
-    kell.tick(60)  # max kaadrite arv sekundis
+    
+pg.quit()
