@@ -1,11 +1,13 @@
 import pygame as pg
 from sys import exit
 import random
+
 pg.mixer.init()
 
 LAIUS, KÕRGUS = 800, 400
 MAAPIND_KÕRGUS = 350
 KIIRUS = 3
+
 
 def kokkupõrked(koer, vastased):
     if vastased:
@@ -14,6 +16,7 @@ def kokkupõrked(koer, vastased):
                 mäng_läbi_heli.play()
                 return False
     return True
+
 
 def vastaste_liikumine(vastaste_nimekiri):
     if vastaste_nimekiri:
@@ -30,18 +33,41 @@ def vastaste_liikumine(vastaste_nimekiri):
         return vastaste_nimekiri
     else:
         return []
-    
+
+
 def skoori_näitamine(x_telg, y_telg):
-    skoor = font.render("Skoor: " + str(round(skoori_value)),True, "Black")
+    skoor = font.render("Skoor: " + str(round(skoori_value)), True, "Black")
     mänguekraan.blit(skoor, (x_telg, y_telg))
+
+
+tekst = "Alustamiseks vajuta tühikut \nLiigu paremale parema nooleklahviga \nLiigu vasakule vasaku nooleklahviga \nHüppamiseks kasuta tühikut"
+teksti_pos = LAIUS / 10, 150
+
 
 def mängu_avaleht():
     if avaleht:
         mänguekraan.fill("Pink")
-        alguse_tekst = font.render("Alustamiseks vajuta tühikut", True, "Black")
-        alguse_tekst_rect = alguse_tekst.get_rect(center=(LAIUS / 2, 50))
-        mänguekraan.blit(alguse_tekst, alguse_tekst_rect)
+
+        kogu_tekst = [sõna.split(' ') for sõna in tekst.splitlines()]
+        vahe = font.size(' ')[0]
+        x, y = teksti_pos
+        for read in kogu_tekst:
+            for sõnad in read:
+                sõna_pind = font.render(sõnad, True, "Black")
+                sõna_laius, sõna_kõrgus = sõna_pind.get_size()
+                if x + sõna_laius >= LAIUS:
+                    x = teksti_pos[0]
+                    y += sõna_kõrgus
+                mänguekraan.blit(sõna_pind, (x, y))
+                x += sõna_laius + vahe
+            x = teksti_pos[0]
+            y += sõna_kõrgus
+
+        # alguse_tekst = font.render("Alustamiseks vajuta tühikut", True, "Black")
+        # alguse_tekst_rect = alguse_tekst.get_rect(center=(LAIUS / 2, 50))
+        # mänguekraan.blit(alguse_tekst, alguse_tekst_rect)
         pg.display.update()
+
 
 def mängu_kiirus():
     if skoori_value <= 20:
@@ -61,8 +87,9 @@ def mängu_kiirus():
     if skoori_value > 140 and skoori_value <= 160:
         kell.tick(130)
     if skoori_value > 160:
-        kell.tick(140)  
-        
+        kell.tick(140)
+
+
 pg.init()
 
 # loome mänguekraani, lisame mänguekraani aknale pealkirja ja ikooni, kella, fondi tüübi ja suuruse
@@ -162,9 +189,11 @@ while True:
                 # kassi ja linnu asukoha x- ja y-teljel (koeral määrasime ülevalpool, vastastel aga siin)
 
                 if random.randint(0, 2):
-                    vastased_rect_nimekiri.append(kass.get_rect(midbottom=(random.randint(900, 1100), MAAPIND_KÕRGUS + 2)))
+                    vastased_rect_nimekiri.append(
+                        kass.get_rect(midbottom=(random.randint(900, 1100), MAAPIND_KÕRGUS + 2)))
                 else:
-                    vastased_rect_nimekiri.append(lind.get_rect(midbottom=(random.randint(900, 1100), MAAPIND_KÕRGUS - 70)))
+                    vastased_rect_nimekiri.append(
+                        lind.get_rect(midbottom=(random.randint(900, 1100), MAAPIND_KÕRGUS - 70)))
         else:
             if event.type == pg.KEYDOWN and event.key == pg.K_SPACE:
                 mäng_aktiivne = True
@@ -176,15 +205,15 @@ while True:
 
     if mäng_aktiivne:
         mänguekraan.blit(linn, (ekraan, 0))
-        mänguekraan.blit(linn, (LAIUS+ekraan, 0))
+        mänguekraan.blit(linn, (LAIUS + ekraan, 0))
         if (ekraan == -LAIUS):
-            mänguekraan.blit(linn, (LAIUS+ekraan, 0))
+            mänguekraan.blit(linn, (LAIUS + ekraan, 0))
             ekraan = 0
         ekraan -= 1
         mänguekraan.blit(maapind, (ekraan, MAAPIND_KÕRGUS))
-        mänguekraan.blit(maapind, (LAIUS+ekraan, MAAPIND_KÕRGUS))
+        mänguekraan.blit(maapind, (LAIUS + ekraan, MAAPIND_KÕRGUS))
         if (ekraan == -LAIUS):
-            mänguekraan.blit(maapind, (LAIUS+ekraan, MAAPIND_KÕRGUS))
+            mänguekraan.blit(maapind, (LAIUS + ekraan, MAAPIND_KÕRGUS))
             ekraan = 0
         ekraan -= 1
 
@@ -199,24 +228,24 @@ while True:
             koer_rect.bottom = MAAPIND_KÕRGUS + 5
         koer_rect.clamp_ip(mänguekraan_rect)
         mänguekraan.blit(koer, koer_rect)
-        
+
         # joonistame koera(pinna) täpselt sinna asukohta, kus
         # koera ümber tõmmatud ristkülik asub
 
         # vaenlaste liikumine
 
         vastased_rect_nimekiri = vastaste_liikumine(vastased_rect_nimekiri)
-            
+
         # kokkupõrge
-        
+
         mäng_aktiivne = kokkupõrked(koer_rect, vastased_rect_nimekiri)
-        
+
         # skoori lugemine
         if kokkupõrked(koer_rect, vastased_rect_nimekiri) == True:
             skoori_value += 0.01
-        
+
         skoori_näitamine(skoori_tekst_X, skoori_tekst_Y)
-        
+
         mängu_kiirus()
 
     # lõpuekraan
@@ -228,5 +257,5 @@ while True:
         koer_rect = koer.get_rect(midbottom=(80, MAAPIND_KÕRGUS + 5))
 
     pg.display.update()
-    
+
 pg.quit()
