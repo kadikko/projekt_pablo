@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="0f174411-0826-4644-9569-3fd4bcbeb43d" name="Changes" comment="Kaustad">
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="main" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
+  <component name="ProjectId" id="2HGg7fRrdLVxY7ugKvastHRNu0Y" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;
+  }
+}</component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="0f174411-0826-4644-9569-3fd4bcbeb43d" name="Changes" comment="" />
+      <created>1667916668956</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1667916668956</updated>
+      <workItem from="1667916672692" duration="788000" />
+      <workItem from="1667917498908" duration="25885000" />
+      <workItem from="1668018531976" duration="3887000" />
+      <workItem from="1669204268352" duration="6440000" />
+      <workItem from="1669213061125" duration="4656000" />
+      <workItem from="1669274338351" duration="404000" />
+      <workItem from="1669313102522" duration="208000" />
+      <workItem from="1669421998181" duration="486000" />
+      <workItem from="1670154682972" duration="145000" />
+      <workItem from="1670154832871" duration="300000" />
+      <workItem from="1670159798267" duration="350000" />
+      <workItem from="1670254447138" duration="182000" />
+      <workItem from="1670277567578" duration="316000" />
+      <workItem from="1670334088517" duration="1907000" />
+    </task>
+    <task id="LOCAL-00001" summary="Esimene versioon">
+      <created>1668017365327</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1668017365327</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Pildid jms">
+      <created>1668017701249</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1668017701249</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Lisasin koera jooksmise, vastased peaks olema aeglasemad nüüd jms.">
+      <created>1668021209067</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1668021209067</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Lisasin taustaheli ja mängulõpu heli; lisasin kommentaare ja proovisin koodi paremini loetavaks teha (konstandid, selgemad muutujate nimetused jne)">
+      <created>1669217988650</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1669217988650</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Nüüd saab space klahvi all hoides uut mängu alustada.">
+      <created>1669218729829</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1669218729830</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Kaustad">
+      <created>1669274613109</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1669274613109</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Esimene versioon" />
+    <MESSAGE value="Pildid jms" />
+    <MESSAGE value="Lisasin koera jooksmise, vastased peaks olema aeglasemad nüüd jms." />
+    <MESSAGE value="Lisasin taustaheli ja mängulõpu heli; lisasin kommentaare ja proovisin koodi paremini loetavaks teha (konstandid, selgemad muutujate nimetused jne)" />
+    <MESSAGE value="Nüüd saab space klahvi all hoides uut mängu alustada." />
+    <MESSAGE value="Kaustad" />
+    <option name="LAST_COMMIT_MESSAGE" value="Kaustad" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/projekt_pablo$main.coverage" NAME="main Coverage Results" MODIFIED="1670402646876" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+  </component>
+</project>
