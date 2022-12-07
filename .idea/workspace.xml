@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0f174411-0826-4644-9569-3fd4bcbeb43d" name="Changes" comment="Kaustad">
+    <list default="true" id="0f174411-0826-4644-9569-3fd4bcbeb43d" name="Changes" comment="uus font(täpitähtedega)">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Caveat-VariableFont.ttf" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pixeltype/Pixeltype.ttf" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,6 +69,7 @@
       <workItem from="1670254447138" duration="182000" />
       <workItem from="1670277567578" duration="316000" />
       <workItem from="1670334088517" duration="1907000" />
+      <workItem from="1670402964677" duration="614000" />
     </task>
     <task id="LOCAL-00001" summary="Esimene versioon">
       <created>1668017365327</created>
@@ -109,7 +113,14 @@
       <option name="project" value="LOCAL" />
       <updated>1669274613109</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="uus font(täpitähtedega)">
+      <created>1670403030523</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1670403030523</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -133,9 +144,10 @@
     <MESSAGE value="Lisasin taustaheli ja mängulõpu heli; lisasin kommentaare ja proovisin koodi paremini loetavaks teha (konstandid, selgemad muutujate nimetused jne)" />
     <MESSAGE value="Nüüd saab space klahvi all hoides uut mängu alustada." />
     <MESSAGE value="Kaustad" />
-    <option name="LAST_COMMIT_MESSAGE" value="Kaustad" />
+    <MESSAGE value="uus font(täpitähtedega)" />
+    <option name="LAST_COMMIT_MESSAGE" value="uus font(täpitähtedega)" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/projekt_pablo$main.coverage" NAME="main Coverage Results" MODIFIED="1670402646876" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/projekt_pablo$main.coverage" NAME="main Coverage Results" MODIFIED="1670404211967" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
