@@ -38,7 +38,7 @@ def skoori_näitamine(x_telg, y_telg):
 def mängu_avaleht():
     if avaleht:
         mänguekraan.fill("Pink")
-        alguse_tekst = font.render("Alustamiseks vajuta tuhikut", True, "Black")
+        alguse_tekst = font.render("Alustamiseks vajuta tühikut", True, "Black")
         alguse_tekst_rect = alguse_tekst.get_rect(center=(LAIUS / 2, 50))
         mänguekraan.blit(alguse_tekst, alguse_tekst_rect)
         pg.display.update()
@@ -73,21 +73,16 @@ pg.display.set_caption("Pablo seiklus")
 mänguekraani_ikoon = pg.image.load("pildid/black-dog.png")
 pg.display.set_icon(mänguekraani_ikoon)
 kell = pg.time.Clock()
-font = pg.font.Font("Pixeltype.ttf", 55)
+font = pg.font.Font("Caveat-VariableFont.ttf", 40)
 
 # salvestame pildid, mida kasutame tausta jaoks
 
 maapind = pg.image.load("pildid/pind2.png")
 linn = pg.image.load("pildid/lumine-taust-1.jpeg")
 
-# salvestame teksti, mida tahame visualiseerida mängu ajal
+# salvestame teksti, mida visualiseerime mängu lõppedes
 
-tekst_mängu_ajal = font.render("Pablo seiklus", False, "Black")
-tekst_mängu_ajal_rect = tekst_mängu_ajal.get_rect(center=(LAIUS / 2, 50))
-
-# ja teksti, mida visualiseerime mängu lõppedes
-
-tekst_mäng_läbi = font.render("GAME OVER", False, "Black")
+tekst_mäng_läbi = font.render("MÄNG LÄBI - kaotasid", False, "Black")
 tekst_mäng_läbi_rect = tekst_mäng_läbi.get_rect(center=(LAIUS / 2, KÕRGUS / 2))
 
 # laeme peategelase, kassi ja linnu pildid sisse, loeme need muutujatesse
@@ -136,7 +131,7 @@ mängu_avaleht()
 while avaleht:
     for event in pg.event.get():
         if event.type == pg.QUIT:
-            pg.quit() # quit on init-i vastand, lõpetame mängu
+            pg.quit()
             exit()
         if event.type == pg.KEYDOWN and event.key == pg.K_SPACE:
             avaleht = False
@@ -192,7 +187,6 @@ while True:
             mänguekraan.blit(maapind, (LAIUS+ekraan, MAAPIND_KÕRGUS))
             ekraan = 0
         ekraan -= 1
-        mänguekraan.blit(tekst_mängu_ajal, tekst_mängu_ajal_rect)
 
         # KOER
         koer_gravitatsioon += 1
