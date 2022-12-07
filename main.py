@@ -73,7 +73,7 @@ pg.display.set_caption("Pablo seiklus")
 mänguekraani_ikoon = pg.image.load("pildid/black-dog.png")
 pg.display.set_icon(mänguekraani_ikoon)
 kell = pg.time.Clock()
-font = pg.font.Font("Caveat-VariableFont.ttf", 40)
+font = pg.font.Font("ZenDots-Regular.ttf", 30)
 
 # salvestame pildid, mida kasutame tausta jaoks
 
