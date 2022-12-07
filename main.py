@@ -40,8 +40,10 @@ def skoori_näitamine(x_telg, y_telg):
     mänguekraan.blit(skoor, (x_telg, y_telg))
 
 
-tekst = "Alustamiseks vajuta tühikut \nLiigu paremale parema nooleklahviga \nLiigu vasakule vasaku nooleklahviga \nHüppamiseks kasuta tühikut"
-teksti_pos = LAIUS / 10, 150
+ring = u"\u2022"
+tekst = f"{ring} Alustamiseks vajuta tühikut \n{ring} Liigu paremale parema nooleklahviga \n\
+{ring} Liigu vasakule vasaku nooleklahviga \n{ring} Hüppamiseks kasuta tühikut \n{ring} Väljumiseks vajuta ESC klahvi"
+teksti_pos = 60, 100
 
 
 def mängu_avaleht():
@@ -160,6 +162,9 @@ while avaleht:
         if event.type == pg.QUIT:
             pg.quit()
             exit()
+        if event.type == pg.KEYDOWN and event.key == pg.K_ESCAPE:
+            pg.quit()
+            exit()
         if event.type == pg.KEYDOWN and event.key == pg.K_SPACE:
             avaleht = False
             mäng_aktiivne = True
@@ -168,6 +173,9 @@ while True:
     # nupuvajutused
     for event in pg.event.get():
         if event.type == pg.QUIT:
+            pg.quit()
+            exit()
+        if event.type == pg.KEYDOWN and event.key == pg.K_ESCAPE:
             pg.quit()
             exit()
         if mäng_aktiivne:
